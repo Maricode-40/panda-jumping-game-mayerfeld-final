@@ -1,21 +1,28 @@
 body {
   display: flex;
   justify-content: center;
-  height: 100vw;
+  height: 100vh;
   margin: 0;
   font-family: Arial, Helvetica, sans-serif;
   background: linear-gradient(to top, #6ec6ff, #e0f7fa);
 }
 
 .game {
-  width: 700px;
-  height: 250px;
-  background-color: #b3e5fc;
+  width: 90%;
+  max-width: 700px;
+  aspect-ratio: 7 / 2.5; /* keeps proportion */
+  background: #b3e5fc;
   border: 2px solid #0288d1;
   position: relative;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+  overflow: hidden;
+}
+
+.game section {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border-top: 2px solid #0288d1;
+  border-bottom: 2px solid #0288d1;
   overflow: hidden;
 }
 
@@ -26,42 +33,33 @@ header {
   color: #01579b;
 }
 
-section {
-  flex: 1;
-  position: relative;
-  overflow: hidden;
-  border-top: 2px solid #0288d1;
-  border-bottom: 2px solid #0288d1;
-}
-
 #player {
-  width: 50px;
-  height: 50px;
-  display: flex;
+  width: 7%;
+  height: 20%;
   background: url("../assets/images/panda1.png") no-repeat center/contain;
   position: absolute;
   bottom: 0;
-  left: 10px;
+  left: 2%;
 }
 
 #obstacle {
-  width: 40px;
-  height: 60px;
-  background: url("../assets/images/spourwater.png");
+  width: 7%;
+  height: 20%;
+  background: url("../assets/images/spourwater.png") no-repeat center/contain;
   position: absolute;
   bottom: 0;
   filter: drop-shadow(0 0 5px white);
-  right: 200px;
-  background-color: red; /* DEBUG */
+  right: -10%;
+  /*background-color: red; DEBUG only*/
 }
 
 #goal {
-  width: 80px;
-  height: 60px;
+  width: 7%;
+  height: 20%;
   background: url("../assets/images/yatch.png") no-repeat center/contain;
   position: absolute;
   bottom: 0;
-  right: 10px;
+  right: 2%;
 }
 
 footer {

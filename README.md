@@ -46,6 +46,10 @@ Win condition: if the panda reaches the boat → You Win!
 
 This model is intentionally simple, so you can follow along and understand how the different parts (HTML for structure, CSS for style, JS for behavior) come together to make a working 2D mini-game.
 
+The loop:  * Moves the obstacle * Checks collisions * updates score/game state. 
+
+Fully responsive as we use relative size in css.
+
 # Collaborators 
 Marissa Rico Developer
 Shalom Alalade
