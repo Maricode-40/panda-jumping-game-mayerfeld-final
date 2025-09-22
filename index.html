@@ -1,23 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Jumpling Game</title>
     <link rel="stylesheet" href="./css/style.css">
     <script src="./js/script.js"></script>
   </head>
   <body>
-    <main>
       <header>
-        <p>Score</p>
+        <p>Score :<output id="score">0</output></p>
       </header>
-
-      <section>
-        <div></div>
-        <div></div>
+       <main class="game" role="application">
+      <section aria-label="Play-area">
+        <div id="player" role="figure" aria-label="Player"></div>  
+        <div id="obstacle" role="figure" aria-label="Obstacle"></div>
+        <div id="goal" role="figure" aria-label="Boat Goal"></div>
       </section>
-      <footer></footer>
+      <footer>
+        <p id="game-over" hidden>GAME OVER - Press tab to restart</p>
+      </footer>
+     
     </main>
   </body>
 </html>
