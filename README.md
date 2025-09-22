@@ -12,13 +12,13 @@ Used technologies:
 
 # Objective
 
-This repository is basically just a simple jumping game model that allows you to easily understand how the mechanics work:
+This repository is basically just a jumping game model that allows you to easily understand how the mechanics work:
 
 HTML5 provides the semantic structure:
 
  < main > → game container
 
-< header > → live score ( < output >)
+< header > → live score( < output >)
 
 < section > → play area with the panda (player), fountain (obstacle), and boat (goal)
 
@@ -40,13 +40,18 @@ A jump function that makes the panda jump with requestAnimationFrame
 
 A loop that moves the fountain across the screen
 
-Collision detection: if the panda hits the fountain → Game Over
+Collision detection: if the panda hits the spour water → Game Over
 
 Win condition: if the panda reaches the boat → You Win!
 
 This model is intentionally simple, so you can follow along and understand how the different parts (HTML for structure, CSS for style, JS for behavior) come together to make a working 2D mini-game.
 
 # Collaborators 
+Marissa Rico Developer
+Shalom Alalade
 
-# Deploy 🚀 🚀
+# Deploy 🚀 🚀 
+ ## 🎮 Live Demo 
+👉 [**Click here to play the game!**](https://maricode-40.github.io/panda-jumping-game-mayerfeld-final/)
+
 
