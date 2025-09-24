@@ -1,3 +1,10 @@
+
+# Panda Jumping Game 🎮
+
+# Objective
+
+This repository is basically just a jumping game model 2D that allows you to easily understand how the mechanics work. 
+
 ## Stack
 
 Used technologies:
@@ -10,9 +17,8 @@ Used technologies:
 
 ![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E)
 
-# Objective
 
-This repository is basically just a jumping game model that allows you to easily understand how the mechanics work:
+### Features
 
 HTML5 provides the semantic structure:
 
@@ -50,12 +56,20 @@ The loop:  * Moves the obstacle * Checks collisions * updates score/game state.
 
 Fully responsive as we use relative size in css.
 
+# Views 
+
+Some of the views can be seen  below: 
+
+![Windows Mobile View](./assets/images/winmobile.png)
+
+![Windows Desktop View](./assets/images/gameov.png)
+
 # Collaborators 
 - Marissa Rico Developer 
 - Shalom Alalade Developer 
 
 # Deploy 🚀 🚀 
- ## 🎮 Live Demo 
+ 🎮 Live Demo 
 👉 [**Click here to play the game!**](https://maricode-40.github.io/panda-jumping-game-mayerfeld-final/)
 
 
