@@ -5,21 +5,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Jumpling Game</title>
     <link rel="stylesheet" href="./css/style.css" />
-    <script src="./js/script.js" defer></script>
   </head>
   <body>
     <header>
       <p>Score :<output id="score">0</output></p>
+      <!-- <button id="test-btn">Volume</button>      BUTTON FOR TESTING AUDION IN BROWSERS -->
     </header>
     <main class="game" role="application">
-      <section aria-label="Play-area">
         <div id="player" role="figure" aria-label="Player"></div>
         <div id="obstacle" role="figure" aria-label="Obstacle"></div>
         <div id="goal" role="figure" aria-label="Boat Goal"></div>
-      </section>
       <footer>
         <p id="game-over" hidden>GAME OVER - Press tab to restart</p>
       </footer>
     </main>
+    <script src="./js/script.js"></script>
   </body>
 </html>
