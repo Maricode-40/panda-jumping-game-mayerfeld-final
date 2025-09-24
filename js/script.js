@@ -6,6 +6,16 @@ function startGame() {
   const goal = document.getElementById("goal");
   const scoreOutput = document.getElementById("score");
   const gameOverText = document.getElementById("game-over");
+  
+  /**    TEST SOUND 
+  const testBtn = document.getElementById("test-btn");
+  testBtn.addEventListener("click", () => {
+  jumpSound.currentTime = 0;
+  jumpSound.play()
+    .then(() => console.log( "Test sound played"))
+    .catch(err => console.error("Sound blocked:", err));
+});
+*/
 
   // --- Helpers ---
   function getGameWidth() {
@@ -19,6 +29,8 @@ function startGame() {
   let JUMP_HEIGHT = getGameHeight() * 0.30; // let update on resize
   const JUMP_SPEED = 5.5;
   const OBSTACLE_WIDTH = getGameWidth() * 0.07; //const, never changes
+  const jumpSound = new Audio("../assets/sounds/jumping-sound.wav");
+  jumpSound.volume = 0.4;
 
   // --- State ---
   let isJumping = false;
@@ -27,10 +39,15 @@ function startGame() {
   let gameRunning = true;
   let playerX = 20;
 
+
   // --- Jump ---
   function jump() {
     if (isJumping) return;
     isJumping = true;
+
+    jumpSound.currentTime = 0.8;
+    jumpSound.play();
+
 
     let bottom = 0;
     let goingUp = true;
