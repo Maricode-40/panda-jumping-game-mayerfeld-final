@@ -10,7 +10,7 @@ body {
 .game {
   width: 90%;
   max-width: 700px;
-  aspect-ratio: 7 / 2.5; /* keeps proportion */
+  aspect-ratio: 7 / 2.5; 
   border: 2px solid #0288d1;
   position: relative;
   overflow: hidden;
@@ -30,6 +30,7 @@ header {
   position: absolute;
   bottom: 0;
   left: 2%;
+  transition: left 0.1s linear;
 }
 
 #obstacle {
@@ -39,8 +40,6 @@ header {
   position: absolute;
   bottom: 0;
   right: -10%;
-  /* filter: drop-shadow(0 0 5px white); */
-  /*background-color: red; DEBUG only*/
 }
 
 #goal {
@@ -61,4 +60,11 @@ footer {
   font-size: 20px;
   font-weight: bold;
   color: red;
+}
+
+#score {
+  font-size: 16px;
+  font-weight: bold;
+  margin-top: 8px;
+  color: #01579b;
 }
