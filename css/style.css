@@ -16,11 +16,16 @@ body {
   overflow: hidden;
 }
 
-header {
-  padding: 10px;
+header{
+  margin: 1rem;
   font-size: 18px;
   font-weight: bold;
   color: #01579b;
+
+}
+
+section {
+  text-align: center;
 }
 
 #player {
@@ -51,10 +56,6 @@ header {
   right: 2%;
 }
 
-footer {
-  text-align: center;
-  padding: 8px;
-}
 
 #game-over {
   font-size: 20px;

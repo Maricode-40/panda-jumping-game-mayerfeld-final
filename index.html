@@ -3,23 +3,26 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Jumpling Game</title>
+    <meta rel="icon" type="image/png" href="./assets/images/panda1.png">
+    <meta name="author" content="Shalom Alalade, Marissa Rico">
+    <title>Jumping Game</title>
+     <script src="./js/script.js" defer></script>
     <link rel="stylesheet" href="./css/style.css" />
   </head>
   <body>
     <header>
       <p>Score :<output id="score">0</output></p>
-      <!-- <button id="test-btn">Volume</button>      BUTTON FOR TESTING AUDION IN BROWSERS -->
     </header>
     <main class="game" role="application">
         <div id="player" role="figure" aria-label="Player"></div>
         <div id="obstacle" role="figure" aria-label="Obstacle"></div>
         <div id="goal" role="figure" aria-label="Boat Goal"></div>
-      <footer>
-        <p id="game-over" hidden>GAME OVER - Press SpaceBar to restart</p>
-         Press Space or Click to Jump.
-      </footer>
+      <section>
+        <p id="game-over" hidden>GAME OVER!</p>
+         <p aria-hidden="true" aria-label="Game Hint"> Hint: Press Space or Tap Screen to Jump. </p>
+      </section>
     </main>
-    <script src="./js/script.js"></script>
+    <footer>
+    </footer>
   </body>
 </html>

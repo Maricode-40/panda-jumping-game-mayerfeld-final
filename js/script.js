@@ -24,7 +24,7 @@ function startGame() {
   const gameOverSound = new Audio('../assets/sounds/drowning.mp3');
   const winSound = new Audio('../assets/sounds/game-win-other.mp3');
 
-  const TOTAL_LAPS = 3; 
+  const TOTAL_LAPS = 2; 
 
   // --- State ---
   let isJumping = false;
@@ -64,7 +64,6 @@ function startGame() {
 
       requestAnimationFrame(animateJump);
     }
-
     requestAnimationFrame(animateJump);
   }
 
@@ -111,7 +110,7 @@ function startGame() {
       scoreOutput.textContent = score;
 
       if (score % 10 === 0) {
-        gameSpeed += getGameWidth() * 0.002;
+        gameSpeed += getGameWidth() * 0.001;
       }
     } else {
       obstacle.style.right = `${obstacleRight + gameSpeed}px`;
@@ -163,7 +162,7 @@ function startGame() {
 
     if (win) {
       winSound.play();
-      game.style.background = "linear-gradient(to top, #c8e6c9, #a5d6a7)";
+      game.style.background = "linear-gradient(to top, #73c2fb";
       obstacle.style.display = "none";
     } else {
       gameOverSound.play();
