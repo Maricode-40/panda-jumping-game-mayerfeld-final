@@ -6,16 +6,6 @@ function startGame() {
   const goal = document.getElementById("goal");
   const scoreOutput = document.getElementById("score");
   const gameOverText = document.getElementById("game-over");
-  
-  /**    TEST SOUND 
-  const testBtn = document.getElementById("test-btn");
-  testBtn.addEventListener("click", () => {
-  jumpSound.currentTime = 0;
-  jumpSound.play()
-    .then(() => console.log( "Test sound played"))
-    .catch(err => console.error("Sound blocked:", err));
-});
-*/
 
   // --- Helpers ---
   function getGameWidth() {
@@ -25,29 +15,36 @@ function startGame() {
     return game.clientHeight;
   }
 
-  // --- Config (relative to game size) ---
-  let JUMP_HEIGHT = getGameHeight() * 0.30; // let update on resize
+  // --- Config ---
+  let JUMP_HEIGHT = getGameHeight() * 0.3;
   const JUMP_SPEED = 5.5;
-  const OBSTACLE_WIDTH = getGameWidth() * 0.07; //const, never changes
+  const OBSTACLE_WIDTH = getGameWidth() * 0.07;
   const jumpSound = new Audio("../assets/sounds/jumping-sound.wav");
   jumpSound.volume = 0.4;
+  const gameOverSound = new Audio('../assets/sounds/drowning.mp3');
+  const winSound = new Audio('../assets/sounds/game-win-other.mp3');
+
+  const TOTAL_LAPS = 2; 
 
   // --- State ---
   let isJumping = false;
   let score = 0;
-  let gameSpeed = getGameWidth() * 0.01; // 0.1 of game width per frame
+  let gameSpeed = getGameWidth() * 0.01;
   let gameRunning = true;
   let playerX = 20;
+  let lapCount = 0;
 
+  // Initially hide the goal
+  goal.style.display = "none";
 
   // --- Jump ---
   function jump() {
     if (isJumping) return;
     isJumping = true;
 
-    jumpSound.currentTime = 0.8;
-    jumpSound.play();
-
+    jumpSound.pause();
+    jumpSound.currentTime = 0;
+    jumpSound.play().catch(err => console.error("Jump sound error:", err));
 
     let bottom = 0;
     let goingUp = true;
@@ -67,61 +64,87 @@ function startGame() {
 
       requestAnimationFrame(animateJump);
     }
-
     requestAnimationFrame(animateJump);
   }
 
   // Panda runs forward
-  function movePlayerForward() {
-    if (!gameRunning) return;
+ function movePlayerForward() {
+  if (!gameRunning) return;
+
+  const maxRight = getGameWidth() - player.offsetWidth;
+
+  if (playerX < maxRight) {
     playerX += 2;
     player.style.left = `${playerX}px`;
-  }
+  } else {
+    // --- Temporarily disable transition for instant reposition ---
+    player.style.transition = "none";
+    playerX = 20;
+    player.style.left = `${playerX}px`;
 
-  // --- Move obstacle ---
+    // Re-enable transition after a frame
+    requestAnimationFrame(() => {
+      player.style.transition = "left 0.1s linear";
+    });
+
+    lapCount++;
+    if (lapCount >= TOTAL_LAPS) {
+      goal.style.display = "block";
+}
+
+
+    // Reset obstacle position
+    obstacle.style.right = `-${OBSTACLE_WIDTH}px`;
+  }
+}
+
+
+  // Move obstacle from right to left
   function updateObstaclePosition() {
-    let obstacleRight =
-      parseInt(getComputedStyle(obstacle).getPropertyValue("right")) || 0;
+
+    let obstacleRight = parseInt(getComputedStyle(obstacle).getPropertyValue("right")) || 0;
 
     if (obstacleRight > getGameWidth()) {
-      obstacle.style.right = `-${OBSTACLE_WIDTH}px`; // reset off-screen
+      obstacle.style.right = `-${OBSTACLE_WIDTH}px`;
       score++;
-      scoreOutput.value = score;
+      scoreOutput.textContent = score;
 
       if (score % 10 === 0) {
-        gameSpeed += getGameWidth() * 0.002;
+        gameSpeed += getGameWidth() * 0.001;
       }
     } else {
       obstacle.style.right = `${obstacleRight + gameSpeed}px`;
     }
   }
 
-  // --- Collision detection ---
   function checkCollision() {
     const playerRect = player.getBoundingClientRect();
     const obstacleRect = obstacle.getBoundingClientRect();
     const goalRect = goal.getBoundingClientRect();
 
-    // --- Lose if Panda hits obstacle ---
-    if (
+    const hitObstacle =
       playerRect.left < obstacleRect.right &&
       playerRect.right > obstacleRect.left &&
       playerRect.top < obstacleRect.bottom &&
-      playerRect.bottom > obstacleRect.top
-    ) {
+      playerRect.bottom > obstacleRect.top;
+
+    if (hitObstacle) {
       endGame(false);
+      return;
     }
 
-    // --- Win if Panda reaches boat (horizontal overlap is enough) ---
-    if (
-      playerRect.right >= goalRect.left &&
-      playerRect.left <= goalRect.right
-    ) {
-      endGame(true);
+    // Only check goal collision if goal is visible
+    if (goal.style.display === "block") {
+      const reachedGoal =
+        playerRect.right >= goalRect.left &&
+        playerRect.left <= goalRect.right;
+
+      if (reachedGoal) {
+        endGame(true);
+      }
     }
   }
 
-  // Game loop
   function gameLoop() {
     if (!gameRunning) return;
 
@@ -132,11 +155,18 @@ function startGame() {
     requestAnimationFrame(gameLoop);
   }
 
-  // End game
   function endGame(win) {
     gameRunning = false;
     gameOverText.hidden = false;
-    gameOverText.textContent = win ? "YOU WIN! 🐼🚤" : "GAME OVER 💦";
+    gameOverText.textContent = win ? "🎉 YOU WIN! 🐼" : "GAME OVER 💦";
+
+    if (win) {
+      winSound.play();
+      game.style.background = "linear-gradient(to top, #73c2fb";
+      obstacle.style.display = "none";
+    } else {
+      gameOverSound.play();
+    }
   }
 
   // Controls
@@ -165,10 +195,11 @@ function startGame() {
 
   // Resize
   window.addEventListener("resize", () => {
-    JUMP_HEIGHT = getGameHeight() * 0.5;
+    JUMP_HEIGHT = getGameHeight() * 0.3;
   });
 
   // Start loop
+  obstacle.style.right = `-${OBSTACLE_WIDTH}px`;
   gameLoop();
 }
 
