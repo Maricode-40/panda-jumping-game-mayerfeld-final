@@ -19,12 +19,12 @@ function startGame() {
   let JUMP_HEIGHT = getGameHeight() * 0.3;
   const JUMP_SPEED = 5.5;
   const OBSTACLE_WIDTH = getGameWidth() * 0.07;
-  const jumpSound = new Audio("../assets/sounds/jumping-sound.wav");
+  const jumpSound = new Audio("./assets/sounds/jumping-sound.wav");
   jumpSound.volume = 0.4;
-  const gameOverSound = new Audio('../assets/sounds/drowning.mp3');
-  const winSound = new Audio('../assets/sounds/game-win-other.mp3');
+  const gameOverSound = new Audio("./assets/sounds/drowning.mp3");
+  const winSound = new Audio("./assets/sounds/game-win-other.mp3");
 
-  const TOTAL_LAPS = 2; 
+  const TOTAL_LAPS = 2;
 
   // --- State ---
   let isJumping = false;
@@ -44,7 +44,7 @@ function startGame() {
 
     jumpSound.pause();
     jumpSound.currentTime = 0;
-    jumpSound.play().catch(err => console.error("Jump sound error:", err));
+    jumpSound.play().catch((err) => console.error("Jump sound error:", err));
 
     let bottom = 0;
     let goingUp = true;
@@ -68,41 +68,39 @@ function startGame() {
   }
 
   // Panda runs forward
- function movePlayerForward() {
-  if (!gameRunning) return;
+  function movePlayerForward() {
+    if (!gameRunning) return;
 
-  const maxRight = getGameWidth() - player.offsetWidth;
+    const maxRight = getGameWidth() - player.offsetWidth;
 
-  if (playerX < maxRight) {
-    playerX += 2;
-    player.style.left = `${playerX}px`;
-  } else {
-    // --- Temporarily disable transition for instant reposition ---
-    player.style.transition = "none";
-    playerX = 20;
-    player.style.left = `${playerX}px`;
+    if (playerX < maxRight) {
+      playerX += 2;
+      player.style.left = `${playerX}px`;
+    } else {
+      // --- Temporarily disable transition for instant reposition ---
+      player.style.transition = "none";
+      playerX = 20;
+      player.style.left = `${playerX}px`;
 
-    // Re-enable transition after a frame
-    requestAnimationFrame(() => {
-      player.style.transition = "left 0.1s linear";
-    });
+      // Re-enable transition after a frame
+      requestAnimationFrame(() => {
+        player.style.transition = "left 0.1s linear";
+      });
 
-    lapCount++;
-    if (lapCount >= TOTAL_LAPS) {
-      goal.style.display = "block";
-}
+      lapCount++;
+      if (lapCount >= TOTAL_LAPS) {
+        goal.style.display = "block";
+      }
 
-
-    // Reset obstacle position
-    obstacle.style.right = `-${OBSTACLE_WIDTH}px`;
+      // Reset obstacle position
+      obstacle.style.right = `-${OBSTACLE_WIDTH}px`;
+    }
   }
-}
-
 
   // Move obstacle from right to left
   function updateObstaclePosition() {
-
-    let obstacleRight = parseInt(getComputedStyle(obstacle).getPropertyValue("right")) || 0;
+    let obstacleRight =
+      parseInt(getComputedStyle(obstacle).getPropertyValue("right")) || 0;
 
     if (obstacleRight > getGameWidth()) {
       obstacle.style.right = `-${OBSTACLE_WIDTH}px`;
@@ -136,8 +134,7 @@ function startGame() {
     // Only check goal collision if goal is visible
     if (goal.style.display === "block") {
       const reachedGoal =
-        playerRect.right >= goalRect.left &&
-        playerRect.left <= goalRect.right;
+        playerRect.right >= goalRect.left && playerRect.left <= goalRect.right;
 
       if (reachedGoal) {
         endGame(true);
