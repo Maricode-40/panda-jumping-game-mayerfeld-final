@@ -26,35 +26,35 @@ HTML5 provides the semantic structure:
 
 < header > → live score( < output >)
 
-< section > → play area with the panda (player), fountain (obstacle), and boat (goal)
+< section > → play area with the panda (player), spour water (obstacle), and yatch (goal).
 
-< footer > → game-over message
+ → game-over message
+ → easy instructions 
 
-CSS3 handles the layout and visuals:
-
-Background gradient for the water/sky
+CSS3 handles the layout and visuals: Background gradient for the water/sky
 
 Panda, boat, and fountain displayed as images (background: url ( ...) )
 
-Positioning with absolute so characters can move inside the play area
+Positioning: Flex, rAF , TOTAL_LAPS, responsivness.
 
 JavaScript manages the game logic:
 
 Variables for player, obstacle, goal, score, game speed
 
-A jump function that makes the panda jump with requestAnimationFrame
+A jump function that makes the panda jump with requestAnimationFrame (rAF). 
+A loop that moves the spour water across the screen.
 
-A loop that moves the fountain across the screen
+👩🏽‍💻 Capturing Events.
 
 Collision detection: if the panda hits the spour water → Game Over
 
-Win condition: if the panda reaches the boat → You Win!
-
-This model is intentionally simple, so you can follow along and understand how the different parts (HTML for structure, CSS for style, JS for behavior) come together to make a working 2D mini-game.
+Win condition: if the panda reaches the yatch → You Win!
 
 The loop:  * Moves the obstacle * Checks collisions * updates score/game state. 
 
 Fully responsive as we use relative size in css.
+
+This model is intentionally simple, so you can follow along and understand how the different parts (HTML for structure, CSS for style, JS for behaviour - ) alligned together to create a fancy 2D mini-game.
 
 # Views 
 
@@ -64,8 +64,16 @@ Some of the views can be seen  below:
 
 ![Windows Desktop View](./assets/images/gameov.png)
 
+# Future improvements 
+
+Summary in a nutshell:
+
+- Levels with speed scaling → for challenge.
+
+- Lives + animations → for fun & fairness.
+
 # Collaborators 
-- Marissa Rico Developer 
+- Maricode-40/ Marissa Rico Developer 
 - Shalom Alalade Developer 
 
 # Deploy 🚀 🚀 
