@@ -69,3 +69,35 @@ section {
   margin-top: 8px;
   color: #01579b;
 }
+
+#welcome-screen {
+  position: fixed; /* makes it float above everything */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to bottom, #a2d4f5, #ffffff);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  z-index: 1000; /* ensure it's on top */
+}
+
+#start-button {
+  padding: 12px 24px;
+  font-size: 1.2em;
+  cursor: pointer;
+  background-color: #4caf50;
+  color: white;
+  border: none;
+}
+
+#welcome-screen-img {
+  width: 150px;
+  max-width: 40%;
+  height: auto;
+  margin-bottom: 1rem;
+  animation: float 3s ease-in-out infinite;
+}
