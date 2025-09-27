@@ -13,7 +13,15 @@
     <header>
       <p>Score :<output id="score">0</output></p>
     </header>
-    <main class="game" role="application">
+    <div id="welcome-screen">
+      <h1>Panda Jumping</h1>
+      <figure>
+        <img id="welcome-screen-img"src="./assets/images/panda1.png"  alt="panda image">
+        <figcaption>Help Panda reach the Boat</figcaption>
+      </figure>
+      <button id="start-button">Start Game</button>
+    </div>
+    <main class="game" id ="game" role="application">
         <div id="player" role="figure" aria-label="Player"></div>
         <div id="obstacle" role="figure" aria-label="Obstacle"></div>
         <div id="goal" role="figure" aria-label="Boat Goal"></div>
