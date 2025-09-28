@@ -1,31 +1,4 @@
-body {
-  margin: 0;
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-    Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
-  display: grid;
-  place-items: center;
-  min-height: 100vh;
-  background: linear-gradient(to top, #6ec6ff, #e0f7fa);
-}
-
-header {
-  margin: 8px 0;
-
-  .game {
-    width: min(90vw, 700px);
-  }
-
-  #gameCanvas {
-    width: 100px;
-    height: auto;
-    display: block;
-    border: 2px solid #0288d1;
-    background: #b3e5fc;
-    image-rendering: crisp-edges;
-  }
-}
-
-/* body {
+ body {
   display: flex;
   justify-content: center;
   height: 100vh;
@@ -95,4 +68,35 @@ section {
   font-weight: bold;
   margin-top: 8px;
   color: #01579b;
-} */
+
+#welcome-screen {
+  position: fixed; /* makes it float above everything */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to bottom, #a2d4f5, #ffffff);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  z-index: 1000; /* ensure it's on top */
+}
+
+#start-button {
+  padding: 12px 24px;
+  font-size: 1.2em;
+  cursor: pointer;
+  background-color: #4caf50;
+  color: white;
+  border: none;
+}
+
+#welcome-screen-img {
+  width: 150px;
+  max-width: 40%;
+  height: auto;
+  margin-bottom: 1rem;
+  animation: float 3s ease-in-out infinite;
+}
