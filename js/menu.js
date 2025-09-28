@@ -24,7 +24,7 @@ function drawMenu() {
 drawMenu();
 
 function startGame() {
-  window.location.href = "level1.html";
+  window.location.href = "pages/level1.html";
 }
 
 document.addEventListener("keydown", (e) => {

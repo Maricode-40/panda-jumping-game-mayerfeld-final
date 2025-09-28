@@ -1,4 +1,4 @@
-// function startGame() {
+// need to delete***  function startGame() {
 //   // --- DOM elements ---
 //   const game = document.querySelector(".game");
 //   const player = document.getElementById("player");
