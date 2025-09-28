@@ -1,4 +1,3 @@
-
 // --- DOM elements ---
 const game = document.getElementById("game");
 const player = document.getElementById("player");
@@ -135,8 +134,7 @@ function checkCollision() {
 
   if (goal.style.display === "block") {
     const reachedGoal =
-      playerRect.right >= goalRect.left &&
-      playerRect.left <= goalRect.right;
+      playerRect.right >= goalRect.left && playerRect.left <= goalRect.right;
 
     if (reachedGoal) endGame(true);
   }
@@ -188,13 +186,17 @@ function startGame() {
 }
 
 // --- Event Listeners ---
-document.addEventListener("keydown", (e) => {
-  if (e.code === "Space") {
-    e.preventDefault();
-    if (!gameRunning) location.reload();
-    else jump();
-  }
-}, { passive: false });
+document.addEventListener(
+  "keydown",
+  (e) => {
+    if (e.code === "Space") {
+      e.preventDefault();
+      if (!gameRunning) location.reload();
+      else jump();
+    }
+  },
+  { passive: false }
+);
 
 game.addEventListener("click", () => {
   if (!gameRunning) location.reload();
