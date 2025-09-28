@@ -72,6 +72,10 @@ Summary in a nutshell:
 
 - Lives + animations → for fun & fairness.
 
+- Use html canvas tags to create a multi-layer page for the web app. 
+
+- using JavaScript's ES6 and adding retro-syle to improve visuals.  
+
 # Collaborators 
 - Maricode-40/ Marissa Rico Developer 
 - Shalom Alalade Developer 
