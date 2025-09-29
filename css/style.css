@@ -101,3 +101,13 @@ section {
   margin-bottom: 1rem;
   animation: float 3s ease-in-out infinite;
 }
+
+/* floating panda on welcome screen */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
