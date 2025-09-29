@@ -74,7 +74,8 @@ Summary in a nutshell:
 
 - Use html canvas tags to create a multi-layer page for the web app. 
 
-- using JavaScript's ES6 and adding retro-syle to improve visuals.  
+- using JavaScript's ES6 and adding retro-syle to improve visuals.
+- add randomised obstacles for greater complexity
 
 # Collaborators 
 - Maricode-40/ Marissa Rico Developer 
